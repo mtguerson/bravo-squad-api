@@ -5,10 +5,7 @@ import {
   validatorCompiler,
   ZodTypeProvider,
 } from 'fastify-type-provider-zod';
-import { listTodayConversions } from './routes/list-today-conversions';
-
-import 'dotenv/config';
-import { env } from '../env';
+import { listConversions } from './routes/list-today-conversions';
 
 const fastify = Fastify().withTypeProvider<ZodTypeProvider>();
 
@@ -19,7 +16,7 @@ fastify.register(cors, {
 fastify.setSerializerCompiler(serializerCompiler);
 fastify.setValidatorCompiler(validatorCompiler);
 
-fastify.register(listTodayConversions);
+fastify.register(listConversions);
 
 fastify.listen({ port: 3333 }, () => {
   console.log(`Server is running on port 3333`);
