@@ -5,7 +5,7 @@ import {
   validatorCompiler,
   ZodTypeProvider,
 } from 'fastify-type-provider-zod';
-import { listConversions } from './routes/list-today-conversions';
+import { listConversions } from './routes/list-conversions';
 
 const fastify = Fastify().withTypeProvider<ZodTypeProvider>();
 
