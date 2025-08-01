@@ -1,6 +1,6 @@
 import { FastifyPluginCallbackZod } from 'fastify-type-provider-zod';
 import { z } from 'zod';
-import { env } from '../../env';
+import { env } from '../env';
 
 export const listAllStatsByDay: FastifyPluginCallbackZod = (fastify) => {
   fastify.post(
