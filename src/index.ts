@@ -16,7 +16,7 @@ const fastify = Fastify({
 }).withTypeProvider<ZodTypeProvider>();
 
 fastify.register(cors, {
-  origin: 'http://localhost:5173',
+  origin: ['http://localhost:5173', 'https://bravo-squad-dash.vercel.app'],
 });
 
 fastify.setSerializerCompiler(serializerCompiler);
