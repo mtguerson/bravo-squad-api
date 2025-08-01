@@ -24,6 +24,6 @@ fastify.setValidatorCompiler(validatorCompiler);
 fastify.register(listAllStats);
 fastify.register(listAllStatsByDay);
 
-fastify.listen({ port: 3333 }, () => {
+fastify.listen({ port: 3333, host: '0.0.0.0' }, () => {
   console.log(`Server is running on port 3333`);
 });
