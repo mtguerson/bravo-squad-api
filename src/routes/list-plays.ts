@@ -2,25 +2,12 @@ import { FastifyPluginCallbackZod } from 'fastify-type-provider-zod';
 import { z } from 'zod';
 import { env } from '../../env';
 
-const listPlaysResponseSchema = z.array(
-  z.object({
-    event: z.string(),
-    total: z.number(),
-    total_uniq_sessions: z.number(),
-    total_uniq_device: z.number(),
-  })
-);
-
-type ListPlaysResponse = z.infer<typeof listPlaysResponseSchema>;
 
 export const listPlays: FastifyPluginCallbackZod = (fastify) => {
   fastify.post(
     '/list-plays',
     {
       schema: {
-        response: {
-          200: listPlaysResponseSchema,
-        },
         body: z.object({
           startDate: z.string(),
           endDate: z.string(),
@@ -50,7 +37,7 @@ export const listPlays: FastifyPluginCallbackZod = (fastify) => {
         }
       );
 
-      const data: ListPlaysResponse = await response.json();
+      const data = await response.json();
 
       return reply.status(200).send(data);
     }

@@ -8,7 +8,11 @@ import {
 import { listConversions } from './routes/list-conversions';
 import { listPlays } from './routes/list-plays';
 
-const fastify = Fastify().withTypeProvider<ZodTypeProvider>();
+const fastify = Fastify({
+  logger: {
+    level: 'info',
+  },
+}).withTypeProvider<ZodTypeProvider>();
 
 fastify.register(cors, {
   origin: 'http://localhost:5173',
