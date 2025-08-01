@@ -6,6 +6,7 @@ import {
   ZodTypeProvider,
 } from 'fastify-type-provider-zod';
 import { listConversions } from './routes/list-conversions';
+import { listPlays } from './routes/list-plays';
 
 const fastify = Fastify().withTypeProvider<ZodTypeProvider>();
 
@@ -17,6 +18,7 @@ fastify.setSerializerCompiler(serializerCompiler);
 fastify.setValidatorCompiler(validatorCompiler);
 
 fastify.register(listConversions);
+fastify.register(listPlays);
 
 fastify.listen({ port: 3333 }, () => {
   console.log(`Server is running on port 3333`);
