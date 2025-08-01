@@ -5,10 +5,8 @@ import {
   validatorCompiler,
   ZodTypeProvider,
 } from 'fastify-type-provider-zod';
-import { listConversions } from './routes/list-conversions';
-import { listPlays } from './routes/list-plays';
-import { listLiveUsers } from './routes/list-live-users';
 import { listAllStats } from './routes/list-all-stats';
+import { listAllStatsByDay } from './routes/list-all-stats-by-day';
 
 const fastify = Fastify({
   logger: {
@@ -23,10 +21,8 @@ fastify.register(cors, {
 fastify.setSerializerCompiler(serializerCompiler);
 fastify.setValidatorCompiler(validatorCompiler);
 
-fastify.register(listConversions);
-fastify.register(listPlays);
-fastify.register(listLiveUsers);
 fastify.register(listAllStats);
+fastify.register(listAllStatsByDay);
 
 fastify.listen({ port: 3333 }, () => {
   console.log(`Server is running on port 3333`);

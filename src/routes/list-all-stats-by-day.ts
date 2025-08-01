@@ -2,25 +2,23 @@ import { FastifyPluginCallbackZod } from 'fastify-type-provider-zod';
 import { z } from 'zod';
 import { env } from '../../env';
 
-
-export const listPlays: FastifyPluginCallbackZod = (fastify) => {
+export const listAllStatsByDay: FastifyPluginCallbackZod = (fastify) => {
   fastify.post(
-    '/list-plays',
+    '/list-all-stats-by-day',
     {
       schema: {
         body: z.object({
           startDate: z.string(),
           endDate: z.string(),
-          events: z.array(z.enum(['started', 'viewed', 'finished'])).min(1),
           playerId: z.string().min(1),
         }),
       },
     },
     async (request, reply) => {
-      const { playerId, endDate, startDate, events } = request.body;
+      const { playerId, endDate, startDate } = request.body;
 
       const response = await fetch(
-        `${env.VTURB_API_URL}/events/total_by_company`,
+        `${env.VTURB_API_URL}/sessions/stats_by_day`,
         {
           method: 'POST',
           headers: {
@@ -31,7 +29,6 @@ export const listPlays: FastifyPluginCallbackZod = (fastify) => {
           body: JSON.stringify({
             start_date: startDate,
             end_date: endDate,
-            events,
             player_id: playerId,
           }),
         }
