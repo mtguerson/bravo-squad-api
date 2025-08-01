@@ -8,6 +8,7 @@ import {
 import { listConversions } from './routes/list-conversions';
 import { listPlays } from './routes/list-plays';
 import { listLiveUsers } from './routes/list-live-users';
+import { listAllStats } from './routes/list-all-stats';
 
 const fastify = Fastify({
   logger: {
@@ -25,6 +26,7 @@ fastify.setValidatorCompiler(validatorCompiler);
 fastify.register(listConversions);
 fastify.register(listPlays);
 fastify.register(listLiveUsers);
+fastify.register(listAllStats);
 
 fastify.listen({ port: 3333 }, () => {
   console.log(`Server is running on port 3333`);
