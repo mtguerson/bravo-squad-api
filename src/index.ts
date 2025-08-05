@@ -10,6 +10,7 @@ import { listAllStatsByDay } from './routes/list-all-stats-by-day';
 import { env } from './env';
 import { listDomains } from './routes/list-domains';
 import { createPlayer } from './routes/create-player';
+import { listPlayers } from './routes/list-players';
 
 const fastify = Fastify({
   logger: {
@@ -28,6 +29,7 @@ fastify.register(listAllStats);
 fastify.register(listAllStatsByDay);
 fastify.register(listDomains);
 fastify.register(createPlayer);
+fastify.register(listPlayers);
 
 fastify.listen({ port: env.PORT, host: '0.0.0.0' }, () => {
   console.log(`Server is running on port ${env.PORT}`);
