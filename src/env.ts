@@ -5,6 +5,7 @@ const envSchema = z.object({
   VTURB_API_URL: z.url(),
   VTURB_API_TOKEN: z.string().min(1),
   PORT: z.coerce.number().default(3333),
+  DATABASE_URL: z.url(),
 });
 
 export const env = envSchema.parse(process.env);
