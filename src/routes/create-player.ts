@@ -26,7 +26,7 @@ export const createPlayer: FastifyPluginCallbackZod = (fastify) => {
         return reply.status(400).send({ error: 'Player already exists' });
       }
 
-      db.insert(playersTable).values({
+      await db.insert(playersTable).values({
         id,
         name,
       });
